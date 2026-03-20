@@ -1,0 +1,13 @@
+This is a sample meeting note for testing.
+
+Project Alpha is entering the final integration phase.
+The frontend team reported a two-day delay because of an unresolved API issue.
+The backend team said the API contract can be finalized by Friday.
+The product manager asked everyone to update the delivery timeline before the next sync meeting.
+
+The team agreed on three main next steps:
+1. Finalize the API contract by Friday.
+2. Update the project timeline.
+3. Prepare a short risk summary for leadership.
+
+The overall sentiment of the meeting was cautious but positive.
