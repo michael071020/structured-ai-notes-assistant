@@ -42,12 +42,12 @@ def print_notes(result: dict) -> None:
 
 def main() -> None:
     """
-    Day 3 pipeline:
+    Day 4 pipeline:
     1. Load input text
-    2. Generate JSON output from the LLM
+    2. Generate raw JSON text with the LLM
     3. Parse JSON into a Python dict
-    4. Validate the structure
-    5. Print the result
+    4. Validate the result
+    5. Print the final structured notes
     """
     input_file = Path("examples/input.txt")
     text = load_input_text(input_file)
@@ -58,6 +58,7 @@ def main() -> None:
 
     raw_output = generate_notes(text)
 
+    # Keep this print for debugging during development.
     print("=== Raw Model Output ===")
     print(raw_output)
     print()

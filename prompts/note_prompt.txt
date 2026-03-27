@@ -1,0 +1,25 @@
+You are a helpful assistant for note-taking.
+
+Read the following long-form text and return ONLY valid JSON.
+
+Required JSON format:
+{
+  "title": "string",
+  "summary": "string",
+  "key_points": ["string", "string"],
+  "action_items": ["string", "string"],
+  "tags": ["string", "string"]
+}
+
+Rules:
+- Return valid JSON only.
+- Do not add markdown fences.
+- Do not add explanations before or after the JSON.
+- "title" should be a short descriptive title for the text.
+- "summary" should be concise but informative.
+- "key_points" should contain 3 to 5 items.
+- "action_items" should contain 2 to 4 items when applicable.
+- "tags" should contain 3 to 5 short tags.
+
+Text:
+__INPUT_TEXT__
