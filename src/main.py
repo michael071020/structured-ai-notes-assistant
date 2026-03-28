@@ -31,8 +31,11 @@ def print_notes(result: dict) -> None:
     print()
 
     print("Action Items:")
-    for item in result["action_items"]:
-        print(f"- {item}")
+    if result["action_items"]:
+        for item in result["action_items"]:
+            print(f"- {item}")
+    else:
+        print("- No clear action items found.")
     print()
 
     print("Tags:")
@@ -42,9 +45,9 @@ def print_notes(result: dict) -> None:
 
 def main() -> None:
     """
-    Day 4 pipeline:
+    Day 5 pipeline:
     1. Load input text
-    2. Generate raw JSON text with the LLM
+    2. Generate structured JSON text with the LLM
     3. Parse JSON into a Python dict
     4. Validate the result
     5. Print the final structured notes
@@ -58,7 +61,8 @@ def main() -> None:
 
     raw_output = generate_notes(text)
 
-    # Keep this print for debugging during development.
+    # Keep raw output visible during development so prompt quality
+    # and model behavior can be inspected more easily.
     print("=== Raw Model Output ===")
     print(raw_output)
     print()
