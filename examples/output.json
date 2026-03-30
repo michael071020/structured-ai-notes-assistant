@@ -1,0 +1,23 @@
+{
+  "title": "Project Alpha Integration Meeting Notes",
+  "summary": "Project Alpha is moving into its final integration phase, but progress is slightly delayed by an unresolved API issue affecting the frontend. The backend team expects the API contract to be finalized by Friday, and the team agreed to update the timeline and prepare a brief risk summary for leadership. Overall, the meeting was cautiously optimistic.",
+  "key_points": [
+    "Project Alpha is in the final integration phase.",
+    "The frontend team reported a two-day delay due to an unresolved API issue.",
+    "The backend team expects to finalize the API contract by Friday.",
+    "The product manager requested updates to the delivery timeline before the next sync.",
+    "The meeting ended with a cautious but positive tone."
+  ],
+  "action_items": [
+    "Finalize the API contract by Friday.",
+    "Update the project timeline before the next sync meeting.",
+    "Prepare a short risk summary for leadership."
+  ],
+  "tags": [
+    "Project Alpha",
+    "integration",
+    "API",
+    "timeline",
+    "risk"
+  ]
+}

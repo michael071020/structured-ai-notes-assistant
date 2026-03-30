@@ -1,3 +1,5 @@
+import argparse
+import json
 from pathlib import Path
 
 from llm.client import generate_notes
@@ -14,6 +16,19 @@ def load_input_text(file_path: Path) -> str:
     return file_path.read_text(encoding="utf-8").strip()
 
 
+def save_output_json(data: dict, file_path: Path) -> None:
+    """
+    Save the structured result to a JSON file.
+
+    This makes the project feel more complete because the output
+    is not only printed to the terminal, but also saved as a file.
+    """
+    file_path.parent.mkdir(parents=True, exist_ok=True)
+
+    with file_path.open("w", encoding="utf-8") as f:
+        json.dump(data, f, ensure_ascii=False, indent=2)
+
+
 def print_notes(result: dict) -> None:
     """
     Print the structured result in a human-readable format.
@@ -21,6 +36,7 @@ def print_notes(result: dict) -> None:
     print("=== Structured Notes ===")
     print(f"Title: {result['title']}")
     print()
+
     print("Summary:")
     print(result["summary"])
     print()
@@ -43,19 +59,44 @@ def print_notes(result: dict) -> None:
     print()
 
 
+def parse_args() -> argparse.Namespace:
+    """
+    Parse command-line arguments.
+
+    This gives the project a simple CLI interface so users can
+    choose input and output paths more explicitly.
+    """
+    parser = argparse.ArgumentParser(
+        description="Generate structured notes from long-form text."
+    )
+
+    parser.add_argument(
+        "--input",
+        type=str,
+        default="examples/input.txt",
+        help="Path to the input text file",
+    )
+
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="examples/output.json",
+        help="Path to save the structured JSON output",
+    )
+
+    return parser.parse_args()
+
+
 def main() -> None:
-    """
-    Day 5 pipeline:
-    1. Load input text
-    2. Generate structured JSON text with the LLM
-    3. Parse JSON into a Python dict
-    4. Validate the result
-    5. Print the final structured notes
-    """
-    input_file = Path("examples/input.txt")
+    args = parse_args()
+
+    input_file = Path(args.input)
+    output_file = Path(args.output)
+
     text = load_input_text(input_file)
 
     print("=== Input Loaded ===")
+    print(f"Input file: {input_file}")
     print(f"Characters: {len(text)}")
     print()
 
@@ -71,6 +112,11 @@ def main() -> None:
     validate_notes(result)
 
     print_notes(result)
+
+    save_output_json(result, output_file)
+
+    print("=== Output Saved ===")
+    print(f"Saved structured JSON to: {output_file}")
 
 
 if __name__ == "__main__":
